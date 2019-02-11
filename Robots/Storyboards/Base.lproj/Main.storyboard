@@ -499,14 +499,14 @@
                                     <constraint firstAttribute="width" constant="280" id="zf4-pO-TOW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xz-hD-eCw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xz-hD-eCw">
                                 <rect key="frame" x="235" y="20" width="69" height="30"/>
-                                <color key="backgroundColor" red="0.066906785110000006" green="0.3743715145" blue="0.91053757599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3fG-nY-K1m"/>
                                 </constraints>
                                 <state key="normal" title="Done">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.066906785110000006" green="0.3743715145" blue="0.91053757599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doneButtonTouched:" destination="E1w-FG-1Nq" eventType="touchUpInside" id="YzS-vn-sy7"/>

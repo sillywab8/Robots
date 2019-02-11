@@ -74,7 +74,7 @@ class RobotManager {
     /// - Tag: InitializesPlayers.
     private func initializePlayers() {
         for index in 0 ..< numberOfPlayers {
-            let robot = RobotModel(robotName: Defaults.namesV2[index], robotColor: Defaults.colors[index], assetName: Defaults.robotAssetNames[index], position: Defaults.positions[index])
+            let robot = RobotModel(robotName: Defaults.namesV3[index], robotColor: Defaults.colors[index], assetName: Defaults.robotAssetNames[index], position: Defaults.positions[index])
             robots.append(robot)
         }
     }
