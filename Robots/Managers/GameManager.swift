@@ -18,12 +18,13 @@ class GameManager: NSObject {
     
     // MARK:- Declarations
     
-    static let sectionOrRowsGameSpaces = 7
     typealias GameBoard = Array<[GameBoardSpaceModel]>
     var gameBoard: GameBoard!
     var delegate: GameManagerDelegate?
     var continuousModeTimer: DispatchSourceTimer?
     var pauseTimer: DispatchSourceTimer?
+    
+    static let sectionOrRowsGameSpaces = 7
     
     // MARK:- Convenience methods.
     

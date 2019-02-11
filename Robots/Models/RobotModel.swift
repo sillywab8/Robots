@@ -33,7 +33,7 @@ class RobotModel: BoardSpaceModel {
 
         self.score = 0
         self.status = .playing
-        self.robotImage = UIImage(named: assetName)
+        self.robotImage = UIImage(named: String(format: "%@_1", assetName))
         for frameIndex in 1 ... 2 {
             if let image = UIImage(named: String(format: "%@_%d", assetName, frameIndex)) {
                 self.animatedImages.append(image)

@@ -17,9 +17,15 @@ struct StoryboardIDs {
 }
 
 struct IPhone5EConstants {
-    static let topConstraint: CGFloat = 35.0
+    static let topConstraint: CGFloat = 20.0
     static let gameBoardTopConstraint: CGFloat = 5.0
     static let yAdjustmentValue: CGFloat = 50.0
+}
+
+struct AllDeviceConstants {
+    static let topConstraint: CGFloat = 68.0
+    static let gameBoardTopConstraint: CGFloat = 20.0
+    static let yAdjustmentValue: CGFloat = 0.0
 }
 
 struct AppLayoutDims {

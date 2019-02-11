@@ -27,7 +27,7 @@ class RobotManager {
         static let colors = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.blue]
         static let robotAssetNames = ["robotImage1", "robotImage2", "robotImage3", "robotImage4"]
         static let namesV1 = ["Jenny", "Alex", "Mervyn", "Nike"]
-        static let namesV2 = ["Rick", "Mervyn", "Jake", "Meg"]
+        static let namesV2 = ["Meg", "Jake", "Rick", "Mervyn"]
         static let namesV3 = ["Tira", "Mervyn", "Fifi", "Woof"]
         
     }
@@ -74,7 +74,7 @@ class RobotManager {
     /// - Tag: InitializesPlayers.
     private func initializePlayers() {
         for index in 0 ..< numberOfPlayers {
-            let robot = RobotModel(robotName: Defaults.namesV1[index], robotColor: Defaults.colors[index], assetName: Defaults.robotAssetNames[index], position: Defaults.positions[index])
+            let robot = RobotModel(robotName: Defaults.namesV2[index], robotColor: Defaults.colors[index], assetName: Defaults.robotAssetNames[index], position: Defaults.positions[index])
             robots.append(robot)
         }
     }

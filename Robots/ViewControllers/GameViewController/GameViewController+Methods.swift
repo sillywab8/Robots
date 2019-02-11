@@ -19,7 +19,6 @@ extension GameViewController {
     func adjustViewForIPhone5E() {
         topConstraint.constant = IPhone5EConstants.topConstraint
         gameBoardTopConstraint.constant = IPhone5EConstants.gameBoardTopConstraint
-        
         self.view.layoutIfNeeded()
     }
     
@@ -114,16 +113,10 @@ extension GameViewController {
         robotScoreLabelCollection.forEach { label in label.text = "0"}
         
         // Add title to view. Place based on how many players and make adjustments for iPhone 5E.
-        var yOffsetValue: CGFloat!
-        
-        if robotManager.robots.count > 2 {
-            yOffsetValue = AppLayoutDims.titleOffsetConstantPlayersMoreThanPlayers2
-        } else {
-            topConstraint.constant -= 20
-            yOffsetValue = AppLayoutDims.titleOffsetConstantPlayers2
-        }
-        
-        let yAdjustmentValueForIPhone5E = isIPhoneSE() ? IPhone5EConstants.yAdjustmentValue : 0.0
+        topConstraint.constant = isIPhoneSE() ? IPhone5EConstants.topConstraint : AllDeviceConstants.topConstraint
+        gameBoardTopConstraint.constant = isIPhoneSE() ? IPhone5EConstants.gameBoardTopConstraint : AllDeviceConstants.gameBoardTopConstraint
+        let yOffsetValue: CGFloat = robotManager.robots.count > 2 ? AppLayoutDims.titleOffsetConstantPlayersMoreThanPlayers2 : AppLayoutDims.titleOffsetConstantPlayers2
+        let yAdjustmentValueForIPhone5E = isIPhoneSE() ? IPhone5EConstants.yAdjustmentValue : AllDeviceConstants.yAdjustmentValue
         titleImageView.frame = CGRect(x: (UIScreen.main.bounds.width-Assets.titleImageView.size.width/2)/2,
                                       y: yOffsetValue-yAdjustmentValueForIPhone5E,
                                       width:Assets.titleImageView.size.width/2,
@@ -139,14 +132,6 @@ extension GameViewController {
             robotNameLabelCollection[index].text = robot.robotName
             robotImageViewCollection[index].image = robot.robotImage
         }
-    }
-    
-    /// Inializes view. Make any adjustments based on device used.
-    ///
-    /// - Tag: InitializeView.
-    func initializeView() {
-        guard isIPhoneSE() else { return }
-        adjustViewForIPhone5E()
     }
     
     /// Handles when the screen is tapped.
