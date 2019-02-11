@@ -12,6 +12,7 @@ import UIKit
 
 protocol RobotManagerDelegate {
     func hasFoundAWinner(_ robotIndex: Int)
+    func didEncounterStaleMate()
     func didFinishMovingRobot()
 }
 
@@ -19,16 +20,21 @@ class RobotManager {
     
     struct Defaults {
         static let positions = [PositionDataModel(section: 0, row: 6),
-                                        PositionDataModel(section: 6, row: 0),
-                                        PositionDataModel(section: 0, row: 0),
-                                        PositionDataModel(section: 6, row: 6)]
+                                PositionDataModel(section: 6, row: 0),
+                                PositionDataModel(section: 0, row: 0),
+                                PositionDataModel(section: 6, row: 6)]
         
         static let colors = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.blue]
-        static let names = ["robot1", "robot2", "robot3", "robot4"]
+        static let robotAssetNames = ["robotImage1", "robotImage2", "robotImage3", "robotImage4"]
+        static let namesV1 = ["Jenny", "Alex", "Mervyn", "Nike"]
+        static let namesV2 = ["Rick", "Mervyn", "Jake", "Meg"]
+        static let namesV3 = ["Tira", "Mervyn", "Fifi", "Woof"]
+        
     }
     
     var robots = [RobotModel]()
     var numberOfPlayers: Int
+    var currentRobotIndex: Int = 0
     
     var delegate: RobotManagerDelegate?
     
@@ -37,12 +43,38 @@ class RobotManager {
         initializePlayers()
     }
     
+    /// Handles the next robot's move.
+    ///
+    /// - Tag: HandleNextRobotMove.
+    @objc
+    func handleNextRobotMove(_ gameManager: GameManager?) {
+        guard let gameManager = gameManager else { return }
+        
+        if isStaleMate() {
+            delegate?.didEncounterStaleMate()
+            return
+        }
+        
+        // Advance to next robot
+        currentRobotIndex += 1
+        if currentRobotIndex >= robots.count {
+            currentRobotIndex = 0  // Reset to beginning robot
+        }
+        
+        let robot = robots[currentRobotIndex]
+        if robot.status == .playing {
+            robot.queue.sync {
+                moveRobot(gameManager, self.currentRobotIndex)
+            }
+        }
+    }
+    
     /// Initializes players.
     ///
     /// - Tag: InitializesPlayers.
     private func initializePlayers() {
         for index in 0 ..< numberOfPlayers {
-            let robot = RobotModel(robotName: Defaults.names[index], robotColor: Defaults.colors[index], position: Defaults.positions[index])
+            let robot = RobotModel(robotName: Defaults.namesV1[index], robotColor: Defaults.colors[index], assetName: Defaults.robotAssetNames[index], position: Defaults.positions[index])
             robots.append(robot)
         }
     }
@@ -55,7 +87,6 @@ class RobotManager {
     func bumpScore(_ robotIndex:Int) {
         robots[robotIndex].score += 1
     }
-    
     
     /// Moves a particular robot.
     ///

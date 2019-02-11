@@ -34,7 +34,7 @@ class RobotPickerViewController: UIViewController {
 
 extension RobotPickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        numberOfPlayers = row
+        numberOfPlayers = row + 2
     }
     
 }
@@ -57,6 +57,5 @@ extension RobotPickerViewController: UIPickerViewDataSource {
         let playerImageView = UIImageView(image: players[row])
         return playerImageView
     }
-    
     
 }

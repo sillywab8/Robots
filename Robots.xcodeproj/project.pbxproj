@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9262526220E1C9A00AB6F99 /* AppUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9262525220E1C9A00AB6F99 /* AppUtilities.swift */; };
+		D926252E220F8B7F00AB6F99 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926252D220F8B7F00AB6F99 /* UIDevice+Extension.swift */; };
+		D9262530220F974F00AB6F99 /* GameViewController+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D926252F220F974F00AB6F99 /* GameViewController+Methods.swift */; };
+		D92625322210A4ED00AB6F99 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92625312210A4ED00AB6F99 /* SummaryViewController.swift */; };
 		D95A23E22205368D00F21394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A23E12205368D00F21394 /* AppDelegate.swift */; };
 		D95A23E42205368D00F21394 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A23E32205368D00F21394 /* GameViewController.swift */; };
 		D95A23E72205368D00F21394 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95A23E52205368D00F21394 /* Main.storyboard */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9262525220E1C9A00AB6F99 /* AppUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtilities.swift; sourceTree = "<group>"; };
+		D926252D220F8B7F00AB6F99 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		D926252F220F974F00AB6F99 /* GameViewController+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewController+Methods.swift"; sourceTree = "<group>"; };
+		D92625312210A4ED00AB6F99 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		D95A23DE2205368D00F21394 /* Robots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95A23E12205368D00F21394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D95A23E32205368D00F21394 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +65,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9262527220F8A8C00AB6F99 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D9EB885D220750DD0030A779 /* AppConstants.swift */,
+				D9262525220E1C9A00AB6F99 /* AppUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D9262528220F8AB700AB6F99 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D95A23E52205368D00F21394 /* Main.storyboard */,
+				D95A23ED2205368E00F21394 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D9262529220F8AD900AB6F99 /* Appdelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D95A23E12205368D00F21394 /* AppDelegate.swift */,
+			);
+			path = Appdelegate;
+			sourceTree = "<group>";
+		};
+		D926252A220F8AE900AB6F99 /* Core Data (unused) */ = {
+			isa = PBXGroup;
+			children = (
+				D95A23E82205368D00F21394 /* Robots.xcdatamodeld */,
+			);
+			path = "Core Data (unused)";
+			sourceTree = "<group>";
+		};
+		D926252B220F8B3C00AB6F99 /* GameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D95A23E32205368D00F21394 /* GameViewController.swift */,
+				D9EB885F2207BB4C0030A779 /* GameViewController+Extension.swift */,
+				D926252F220F974F00AB6F99 /* GameViewController+Methods.swift */,
+			);
+			path = GameViewController;
+			sourceTree = "<group>";
+		};
+		D926252C220F8B6000AB6F99 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D926252D220F8B7F00AB6F99 /* UIDevice+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D95A23D52205368D00F21394 = {
 			isa = PBXGroup;
 			children = (
@@ -76,16 +136,16 @@
 		D95A23E02205368D00F21394 /* Robots */ = {
 			isa = PBXGroup;
 			children = (
+				D9262529220F8AD900AB6F99 /* Appdelegate */,
+				D926252C220F8B6000AB6F99 /* Extensions */,
+				D926252A220F8AE900AB6F99 /* Core Data (unused) */,
 				D9EB8854220677C20030A779 /* Managers */,
 				D9EB8853220677B00030A779 /* Models */,
+				D9262528220F8AB700AB6F99 /* Storyboards */,
+				D9262527220F8A8C00AB6F99 /* Utilities */,
 				D9EB88522206779A0030A779 /* ViewControllers */,
-				D95A23E12205368D00F21394 /* AppDelegate.swift */,
-				D95A23E52205368D00F21394 /* Main.storyboard */,
 				D95A23EB2205368E00F21394 /* Assets.xcassets */,
-				D95A23ED2205368E00F21394 /* LaunchScreen.storyboard */,
 				D95A23F02205368E00F21394 /* Info.plist */,
-				D95A23E82205368D00F21394 /* Robots.xcdatamodeld */,
-				D9EB885D220750DD0030A779 /* AppConstants.swift */,
 			);
 			path = Robots;
 			sourceTree = "<group>";
@@ -93,9 +153,9 @@
 		D9EB88522206779A0030A779 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D95A23E32205368D00F21394 /* GameViewController.swift */,
+				D926252B220F8B3C00AB6F99 /* GameViewController */,
 				D9EB885B22074AE20030A779 /* RobotPickerViewController.swift */,
-				D9EB885F2207BB4C0030A779 /* GameViewController+Extension.swift */,
+				D92625312210A4ED00AB6F99 /* SummaryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,12 +258,16 @@
 				D9EB885A220737430030A779 /* PositionDataModel.swift in Sources */,
 				D95A23E42205368D00F21394 /* GameViewController.swift in Sources */,
 				D95A23E22205368D00F21394 /* AppDelegate.swift in Sources */,
+				D92625322210A4ED00AB6F99 /* SummaryViewController.swift in Sources */,
+				D9262530220F974F00AB6F99 /* GameViewController+Methods.swift in Sources */,
 				D95A23EA2205368D00F21394 /* Robots.xcdatamodeld in Sources */,
 				D9EB885C22074AE20030A779 /* RobotPickerViewController.swift in Sources */,
 				D98FC326220B7C5900CC5A2F /* GameBoardSpaceModel.swift in Sources */,
 				D95A23F92205E05800F21394 /* RobotModel.swift in Sources */,
 				D9EB885822067B540030A779 /* RobotManager.swift in Sources */,
 				D9EB88602207BB4C0030A779 /* GameViewController+Extension.swift in Sources */,
+				D9262526220E1C9A00AB6F99 /* AppUtilities.swift in Sources */,
+				D926252E220F8B7F00AB6F99 /* UIDevice+Extension.swift in Sources */,
 				D9EB885E220750DD0030A779 /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,46 +20,52 @@ extension GameViewController: GameManagerDelegate {
             self.gameBoardCollectionView.reloadData()
         }
         guard let _ = robotManager else { return }
-        startGame()
+        gameManager.startGame(robotManager)
     }
 }
 
 // MARK:- RobotManagerDelegate
 
 extension GameViewController: RobotManagerDelegate {
+    
     func hasFoundAWinner(_ robotIndex: Int) {
-        let robot = robotManager.robots[robotIndex]
-        robot.status = .winner
-
-        stopGameTimer()
-        robotManager.bumpScore(robotIndex)
-        updateRobotScore(robotIndex)
-        robotManager.resetRobots()
-        gameManager.resetGame(robotManager: robotManager)
-//        restartGame()
+        gameManager.stopGameTimer()
+        handleWinning(robotIndex)
     }
+    
+    func didEncounterStaleMate() {
+        gameManager.stopGameTimer()
+        handleStaleMate()
+    }
+    
     func didFinishMovingRobot() {
         DispatchQueue.main.async {
             self.gameBoardCollectionView.reloadData()
         }
     }
+
 }
 
 // MARK:- RobotPickerViewControllerDelegate
 
 extension GameViewController: RobotPickerViewControllerDelegate {
     func didFinishPickingNumberOfPlayers(_ numberOfPlayers: Int) {
-        
-
-        // TODO:- Forcing 2 players. More thatn 2 players hasn't been tested due to time constraints.
-        robotManager = RobotManager(numberOfPlayers: 2)
-//        robotManager = RobotManager(numberOfPlayers: numberOfPlayers)
+        robotManager = RobotManager(numberOfPlayers: numberOfPlayers)
         robotManager.delegate = self
-
-        robotViewCollection[0].isHidden = false
-        robotViewCollection[1].isHidden = false
-
+        setupView()
+        
         gameManager.resetGame(robotManager: robotManager)
+    }
+}
+
+// MARK:- SummaryViewControllerDelegate
+
+extension GameViewController: SummaryViewControllerDelegate {
+    func finishedViewingSummary() {
+        robotManager = nil
+        gameManager.createGameBoard()
+        
+        getRobotPlayers()
     }
 }
 
@@ -74,17 +80,23 @@ extension GameViewController: UICollectionViewDataSource {
         let gameBoardItemValue = gameBoardColumnValues[indexPath.item]
         
         guard let robot = gameBoardItemValue.boardSpace else {
+            cell.gameSpaceImageView.image = nil
             cell.backgroundColor = .gray
             return cell
         }
         
         if robot.spaceType == .visited {
+            cell.gameSpaceImageView.image = nil
             cell.backgroundColor = robot.color
             cell.alpha = 0.2
         } else if robot.spaceType == .prize {
-            cell.backgroundColor = robot.color
+            cell.gameSpaceImageView.image = UIImage(named: "money_prize")
+            cell.backgroundColor = .lightGray
+            cell.alpha = 1.0
         } else if robot.spaceType == .robot {
-            cell.backgroundColor = robot.color
+            cell.gameSpaceImageView.contentMode = .scaleAspectFit
+            cell.gameSpaceImageView.image = (robot as? RobotModel)?.robotImage
+            cell.backgroundColor = .lightGray
             cell.alpha = 1.0
         }
         

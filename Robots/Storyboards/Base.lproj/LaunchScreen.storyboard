@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,19 +15,21 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_screen" translatesAutoresizingMaskIntoConstraints="NO" id="dKI-1I-uSw">
-                                <rect key="frame" x="0.0" y="144.5" width="375" height="378"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_screen" translatesAutoresizingMaskIntoConstraints="NO" id="dKI-1I-uSw">
+                                <rect key="frame" x="37.666666666666657" y="246" width="300" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="2eq-QA-peZ"/>
+                                    <constraint firstAttribute="width" constant="300" id="dw0-8e-1cF"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dKI-1I-uSw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Uww-71-CuL"/>
-                            <constraint firstItem="dKI-1I-uSw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cJ7-gJ-ULU"/>
-                            <constraint firstItem="dKI-1I-uSw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hPg-c3-b8D"/>
-                            <constraint firstItem="dKI-1I-uSw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mkj-sS-8dO"/>
+                            <constraint firstItem="dKI-1I-uSw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UDh-nN-dbM"/>
+                            <constraint firstItem="dKI-1I-uSw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dvg-nW-CqD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

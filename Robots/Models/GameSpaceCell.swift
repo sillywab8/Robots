@@ -26,7 +26,7 @@ class GameSpaceCell: UICollectionViewCell {
                                      width: GameSpaceCell.CellDims.width,
                                      height: GameSpaceCell.CellDims.height))
         
-        v.backgroundColor = .darkGray
+        v.backgroundColor = .lightGray
         return v
     }()
     

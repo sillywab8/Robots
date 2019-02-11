@@ -23,14 +23,22 @@ class RobotModel: BoardSpaceModel {
     var status: Status
     var queue: DispatchQueue
     var score: Int
+    var robotImage: UIImage?
+    var animatedImages = [UIImage]()
     
-    init(robotName: String, robotColor: UIColor, position: PositionDataModel) {
+    init(robotName: String, robotColor: UIColor, assetName: String, position: PositionDataModel) {
         self.robotName = robotName
         self.robotColor = robotColor
         self.queue = DispatchQueue(label: UUID().uuidString, attributes: .concurrent)
 
         self.score = 0
         self.status = .playing
+        self.robotImage = UIImage(named: assetName)
+        for frameIndex in 1 ... 2 {
+            if let image = UIImage(named: String(format: "%@_%d", assetName, frameIndex)) {
+                self.animatedImages.append(image)
+            }
+        }
         
         super.init(color: robotColor, type: .robot, position: position)
     }

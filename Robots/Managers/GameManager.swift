@@ -14,7 +14,7 @@ protocol GameManagerDelegate {
     func didFinishResettingGame()
 }
 
-class GameManager {
+class GameManager: NSObject {
     
     // MARK:- Declarations
     
@@ -22,8 +22,31 @@ class GameManager {
     typealias GameBoard = Array<[GameBoardSpaceModel]>
     var gameBoard: GameBoard!
     var delegate: GameManagerDelegate?
+    var continuousModeTimer: DispatchSourceTimer?
+    var pauseTimer: DispatchSourceTimer?
     
     // MARK:- Convenience methods.
+    
+    /// Stops game timer.
+    ///
+    /// - Tag: StopGameTimer.
+    func stopGameTimer() {
+        continuousModeTimer?.cancel()
+        continuousModeTimer = nil
+    }
+    
+    /// Starts game in continuous mode.
+    ///
+    /// - Tag: StarGame.
+    func startGame(_ robotManager: RobotManager) {
+        continuousModeTimer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+        continuousModeTimer?.schedule(deadline: .now(), repeating: .milliseconds(500) )
+        continuousModeTimer?.setEventHandler(handler: { [weak self] in
+            robotManager.handleNextRobotMove(self)
+        })
+        
+        self.continuousModeTimer?.resume()
+    }
     
     /// Resets Game.
     ///
@@ -54,7 +77,7 @@ class GameManager {
     /// Creates game board.
     ///
     /// - Tag: CreateGameBoard.
-    private func createGameBoard() {
+    func createGameBoard() {
         gameBoard = nil
 
         let boardSpace = GameBoardSpaceModel(boardSpace: nil)
@@ -140,7 +163,6 @@ class GameManager {
     func setGameBoardSpace(_ position: PositionDataModel, _ boardSpace: BoardSpaceModel) {
         gameBoard[position.section][position.row].boardSpace = boardSpace
     }
-    
     
     /// Finds next available position.
     ///
