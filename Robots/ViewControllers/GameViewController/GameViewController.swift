@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameViewController: UIViewController {
 
     // MARK:- Declarations
     
     // Managers
-    var titleImageView = UIImageView.init(image: AssetImages.titleImageView)
+    var titleImageView = UIImageView.init(image: Assets.titleImageView)
     var gameManager = GameManager()
     var robotManager: RobotManager!  // Forced unwrap so not needed to unwrap on every usage.  Safe to
                                      // force unwrap because robot manager is loaded from modal in beginning
     
     // Other vars
+    var audioPlayer: AVAudioPlayer?
     private var shouldStopGame = false
     
     // Collection IBOutlets

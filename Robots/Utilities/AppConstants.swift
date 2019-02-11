@@ -44,6 +44,8 @@ struct StringLiterals {
 
 }
 
-struct AssetImages {
+struct Assets {
     static let titleImageView = UIImage(named: "robotsTitle")!
+    static let chaChingSoundFileName = "cha_ching_sound"
+    static let mp3Extension = "mp3"
 }

@@ -9,6 +9,7 @@
 // Contains helper methods for GameViewController
 
 import UIKit
+import AVFoundation
 
 extension GameViewController {
     
@@ -123,10 +124,10 @@ extension GameViewController {
         }
         
         let yAdjustmentValueForIPhone5E = isIPhoneSE() ? IPhone5EConstants.yAdjustmentValue : 0.0
-        titleImageView.frame = CGRect(x: (UIScreen.main.bounds.width-AssetImages.titleImageView.size.width/2)/2,
+        titleImageView.frame = CGRect(x: (UIScreen.main.bounds.width-Assets.titleImageView.size.width/2)/2,
                                       y: yOffsetValue-yAdjustmentValueForIPhone5E,
-                                      width:AssetImages.titleImageView.size.width/2,
-                                      height: AssetImages.titleImageView.size.height/2)
+                                      width:Assets.titleImageView.size.width/2,
+                                      height: Assets.titleImageView.size.height/2)
         self.view.addSubview(titleImageView)
         
         // Show separator if more than 2 players
@@ -168,6 +169,7 @@ extension GameViewController {
         winnerRobot.status = .winner
         robotManager.bumpScore(winnerIndex)
         updateRobotScore(winnerIndex)
+        playWinningSound()
         
         // Show toast of winner
         showToast(view: self.view, message: String(format: StringLiterals.playerWonString, winnerRobot.robotName))
@@ -208,5 +210,23 @@ extension GameViewController {
         
         self.gameManager.pauseTimer?.resume()
     }
+    
+    /// Plays winning sound - cha-ching.
+    ///
+    /// - Tag: PlayWinningSound.
+    private func playWinningSound() {
+        guard let url = Bundle.main.url(forResource: Assets.chaChingSoundFileName, withExtension: Assets.mp3Extension) else { return }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            
+            guard let player = audioPlayer else { return }
+            player.prepareToPlay()
+            player.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
     
 }

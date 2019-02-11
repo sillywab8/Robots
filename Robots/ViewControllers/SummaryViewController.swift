@@ -24,6 +24,7 @@ class SummaryViewController: UIViewController {
     // MARK:- IBOutlets
     
     @IBOutlet var robotViewCollection: [UIView]!
+    @IBOutlet var robotImageViewCollection: [UIImageView]!
     @IBOutlet var robotCommentLabelViewCollection: [UILabel]!
     @IBOutlet var robotScoreLabelViewCollection: [UILabel]!
     
@@ -59,12 +60,20 @@ class SummaryViewController: UIViewController {
             } else if indicesWithMaxScore.count > 1 && robot.score == maxScorePlayer?.score {
                 robotCommentLabelViewCollection[index].text = String(format: StringLiterals.drawSituationString, robot.robotName)
             } else if robot.score == maxScorePlayer?.score {
-                
                 robotCommentLabelViewCollection[index].text = String(format: StringLiterals.youWonString, robot.robotName)
+                animateWinner(index)
             } else {
                 robotCommentLabelViewCollection[index].text = String(format: StringLiterals.loseString, robot.robotName)
             }
         }
+    }
+    
+    private func animateWinner(_ winnerIndex: Int) {
+        let robotImageView = robotImageViewCollection[winnerIndex]
+        robotImageView.animationImages = robotManager.robots[winnerIndex].animatedImages
+        robotImageView.animationDuration = 0.25
+        robotImageView.animationRepeatCount = 0
+        robotImageView.startAnimating()
     }
     
 }
